@@ -1,0 +1,4 @@
+Pillow~=9.0.1
+PyJWT~=2.3.0
+PyQRCode~=1.2.1
+pyzbar~=0.1.8
