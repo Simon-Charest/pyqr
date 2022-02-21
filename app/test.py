@@ -1,13 +1,8 @@
-from app import decode_qr, encode_qr
+from app import encode_qr
 import zlib
 
 
-def test_encode_decode(string='Hello World !', filename='data/hw.png'):
-    encode_qr.encode(string, filename)
-    print(decode_qr.decode_to_shc(filename))
-
-
-def test_encode_qr_compress(data, expected):
+def encode_qr_compress(data, expected):
     for level in list(range(-1, 10)):
         for method in [zlib.DEFLATED]:
             for wbits in list(range(-15, -8)) + list(range(9, 16)) + list(range(25, 32)):
@@ -23,7 +18,7 @@ def test_encode_qr_compress(data, expected):
     return False
 
 
-def test_zlib_compress(data, expected):
+def zlib_compress(data, expected):
     for level in list(range(-1, 10)):
         value = zlib.compress(data, level)
 

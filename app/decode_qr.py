@@ -7,8 +7,8 @@ import re
 import zlib
 
 
-def run(filename, verbose=False):
-    shc_data = decode_to_shc(filename)
+def run(file, verbose=False):
+    shc_data = decode_to_shc(file)
     jws_data = decode_to_jws(shc_data)
     jws_data_list = jws_data.split('.')
     base64_data = list(map(decode_to_base64, jws_data_list))
@@ -17,7 +17,7 @@ def run(filename, verbose=False):
 
     if verbose:
         function.print_function()
-        function.debug(filename, 'filename')
+        function.debug(file, 'file')
         function.debug(shc_data, 'shc_data')
         function.debug(jws_data, 'jws_data')
         function.debug(jws_data_list, 'jws_data_list')
@@ -28,16 +28,16 @@ def run(filename, verbose=False):
     return json_data
 
 
-def decode_to_shc(filepath, verbose=False):
+def decode_to_shc(file, verbose=False):
     # Smart Health Card (SHC)
 
-    shc_data = decode(Image.open(filepath))
+    shc_data = decode(Image.open(file))
 
     if shc_data:
         return shc_data[0].data.decode()
 
     if verbose:
-        print(f'Error decoding {filepath}')
+        print(f'Error decoding {file}')
 
     return shc_data
 

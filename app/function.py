@@ -4,11 +4,6 @@ import inspect
 import zlib
 
 
-def run():
-    iat = 1630263124.0
-    debug(convert(iat), 'iat')
-
-
 def convert(iat, fmt='%Y-%m-%d %H:%M:%S'):
     timestamp = datetime.datetime.fromtimestamp(iat)
 
